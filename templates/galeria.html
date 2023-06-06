@@ -1,0 +1,552 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <!-- Theme Made By www.w3schools.com - No Copyright -->
+  <title>Bootstrap Theme Simply Me</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+  <link href="https://fonts.googleapis.com/css?family=Montserrat" rel="stylesheet">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+  <script src="https://code.jquery.com/jquery-3.2.1.js"></script>
+	
+  
+  
+  <style>
+  body {
+    font: 20px Montserrat, sans-serif;
+    line-height: 1.8;
+    color: #f5f6f7;
+  }
+  
+  h2{
+  color: black;
+  font-family: Montserrat;
+  font-size: 150%;
+  padding-top: 15px;
+  padding-bottom: 0px;
+
+  }
+
+  p {font-size: 15px;}
+  .margin {margin-bottom: 45px;}
+  .bg-1 { 
+    background-color: #52B2F9; /* Green */
+    color: #ffffff;
+  }
+  .bg-2 { 
+    background-color: #474e5d; /* Dark Blue */
+    color: #ffffff;
+  }
+  .bg-3 { 
+    background-color: #ffffff; /* White */
+    color: #555555;
+  }
+  .bg-4 { 
+    background-color: #2f2f2f; /* Black Gray */
+    color: #fff;
+  }
+  .container-fluid {
+    padding-top: 70px;
+    padding-bottom: 70px;
+  }
+  .navbar {
+    padding-top: 15px;
+    padding-bottom: 15px;
+    border: 0;
+    border-radius: 0;
+    margin-bottom: 0;
+    font-size: 12px;
+    letter-spacing: 5px;
+  }
+  .navbar-nav  li a:hover {
+    color: #1abc9c !important;
+  }
+
+.row-one{
+  padding-top: 70px;
+  
+}
+
+  .formBox{
+	margin-top: 90px;
+	padding: 50px;
+}
+.formBox  h1{
+	margin: 0;
+	padding: 0;
+	text-align: center;
+	margin-bottom: 50px;
+	text-transform: uppercase;
+	font-size: 48px;
+}
+.inputBox{
+	position: relative;
+	box-sizing: border-box;
+	margin-bottom: 50px;
+}
+.inputBox .inputText{
+	position: absolute;
+    font-size: 24px;
+    line-height: 50px;
+    transition: .5s;
+    opacity: .5;
+}
+.inputBox .input{
+	position: relative;
+	width: 100%;
+	height: 50px;
+	background: transparent;
+	border: none;
+    outline: none;
+    font-size: 24px;
+    border-bottom: 1px solid rgba(0,0,0,.5);
+
+}
+.focus .inputText{
+	transform: translateY(-30px);
+	font-size: 18px;
+	opacity: 1;
+	color: #00bcd4;
+
+}
+textarea{
+	height: 100px !important;
+}
+.button{
+	width: 100%;
+    height: 50px;
+    border: none;
+    outline: none;
+    background: #03A9F4;
+    color: #fff;
+}
+  </style>
+</head>
+<body>
+
+<!-- Navbar -->
+<nav class="navbar navbar-default">
+  <div class="container">
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>                        
+      </button>
+      <a class="navbar-brand" href="{{url_for('home')}}">CatDog</a>
+    </div>
+    <div class="collapse navbar-collapse" id="myNavbar">
+      <ul class="nav navbar-nav navbar-right">
+        <li><a href="{{url_for('agregar_mascota')}}">Agregar animal</a></li>
+        <li><a href="{{url_for('agregar_mascota')}}">Busqueda de animales</a></li>
+        <li><a href="#">Iniciar sesión</a></li>
+      </ul>
+    </div>
+  </div>
+</nav>
+
+<!-- Third Container (Grid) -->
+<div class="container-fluid bg-3 text-center">    
+	<h3 class="margin">Mascotas disponibles</h3><br>
+	<div class="row">
+    
+<div class="col-sm-3">
+  {% if dic=={} %}
+    <img src="{{ url_for('static', filename='images/uno.jpeg')}}" class="img-responsive margin" style="width:100%" alt="Image">
+  {% else %}
+    <img src="{{url_for('static', filename=dic['1']['filename'])}}" class="img-responsive margin" style="width:100%" alt="Image">
+  {% endif %}
+  
+
+    <div class="row">
+			<div class="col-sm-6">
+        {% if dic=={} %}
+          <p><span style="color:black;font-weight:bold">Nombre:</span>Tomi</p>
+        {% else %}
+          <p><span style="color:black;font-weight:bold">Nombre:</span> {{dic['1']['nombre']}}</p>
+        {% endif %}
+			</div>
+			<div class="col-sm-6">
+        {% if dic=={} %}
+          <p><span style="color:black;font-weight:bold">Raza:</span>Mestizo</p>
+        {% else %}
+				  <p><span style="color:black;font-weight:bold">Raza:</span>{{dic['1']['raza']}}</p>
+        {% endif %}
+			</div>
+		</div>
+		<div class="row">
+			<div class="col-sm-6">
+        {% if dic=={} %}
+          <p><span style="color:black;font-weight:bold">Sexo:</span>macho</p>
+        {% else %}
+				  <p><span style="color:black;font-weight:bold">Sexo:</span>{{dic['1']['sexo']}}</p>
+        {% endif %}
+      </div>
+			<div class="col-sm-6">
+        {% if dic=={} %}
+          <p><span style="color:black;font-weight:bold">Carácter:</span>docil</p>
+        {% else %}
+				  <p><span style="color:black;font-weight:bold">Carácter:</span> {{dic['1']['caracter']}}</p>
+        {% endif %}
+      </div>
+		</div>
+		<div class="row">
+			<div class="col-sm-6">
+        {% if dic=={} %}
+          <p><span style="color:black;font-weight:bold">Color:</span>gris</p>
+        {% else %}
+				  <p><span style="color:black;font-weight:bold">Color:</span> {{dic['1']['color']}}</p>
+        {% endif %}
+      </div>
+			<div class="col-sm-6">
+
+        {% if dic=={} %}
+          <p><span style="color:black;font-weight:bold">Edad:</span>1 año</p>
+        {% else %}
+				  <p><span style="color:black;font-weight:bold">Edad:</span> {{dic['1']['edad']}}</p>
+        {% endif %}
+			</div>
+		</div>
+
+
+    <div class="row">
+			<div class="col-sm-6">
+        {% if dic=={} %}
+          <p><span style="color:black;font-weight:bold">Tamaño:</span>mediano</p>
+        {% else %}  
+          <p><span style="color:black;font-weight:bold">Tamaño:</span> {{dic['1']['tamanio']}}</p>
+        {% endif %}
+      </div>
+			<div class="col-sm-6">
+        {% if dic=={} %}
+          <p><span style="color:black;font-weight:bold">Estado:</span>sin vacunas</p>
+        {% else %} 
+				  <p><span style="color:black;font-weight:bold">Estado:</span> {{dic['1']['salud']}}</p>
+        {% endif %}
+			</div>
+		</div>
+
+		<div class="row">
+			<div class="col-sm-6">
+        {% if dic=={} %}
+				  <p><span style="color:black;font-weight:bold">Sociable:</span>humanos</p>
+        {% else %}
+          <p><span style="color:black;font-weight:bold">Sociable:</span> {{dic['1']['sociable']}}</p> 
+        {% endif %}
+      </div>
+			<div class="col-sm-6">
+        {% if dic=={} %}
+				  <p><span style="color:black;font-weight:bold">No. de contacto:</span>7712988778</p>
+        {% else %}
+          <p><span style="color:black;font-weight:bold">No. de contacto:</span> {{dic['1']['contacto']}}</p>
+        {% endif %}
+			</div>
+		</div>
+	  </div>
+    <div class="col-sm-3">
+      {% if dic|length <= 1 %}
+        <img src="{{ url_for('static', filename='images/dos.jpeg')}}" class="img-responsive margin" style="width:100%" alt="Image">
+      {% else %}
+        <img src="{{url_for('static', filename=dic['2']['filename'])}}" class="img-responsive margin" style="width:100%" alt="Image">
+      {% endif %}
+      
+    
+        <div class="row">
+          <div class="col-sm-6">
+            {% if dic|length <= 1 %}
+              <p><span style="color:black;font-weight:bold">Nombre:</span>Tomi</p>
+            {% else %}
+              <p><span style="color:black;font-weight:bold">Nombre:</span> {{dic['2']['nombre']}}</p>
+            {% endif %}
+          </div>
+          <div class="col-sm-6">
+            {% if dic|length <= 1 %}
+              <p><span style="color:black;font-weight:bold">Raza:</span>Mestizo</p>
+            {% else %}
+              <p><span style="color:black;font-weight:bold">Raza:</span>{{dic['2']['raza']}}</p>
+            {% endif %}
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-sm-6">
+            {% if dic|length <= 1 %}
+              <p><span style="color:black;font-weight:bold">Sexo:</span>macho</p>
+            {% else %}
+              <p><span style="color:black;font-weight:bold">Sexo:</span>{{dic['2']['sexo']}}</p>
+            {% endif %}
+          </div>
+          <div class="col-sm-6">
+            {% if dic|length <= 1 %}
+              <p><span style="color:black;font-weight:bold">Carácter:</span>docil</p>
+            {% else %}
+              <p><span style="color:black;font-weight:bold">Carácter:</span> {{dic['2']['caracter']}}</p>
+            {% endif %}
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-sm-6">
+            {% if dic|length <= 1 %}
+              <p><span style="color:black;font-weight:bold">Color:</span>gris</p>
+            {% else %}
+              <p><span style="color:black;font-weight:bold">Color:</span> {{dic['2']['color']}}</p>
+            {% endif %}
+          </div>
+          <div class="col-sm-6">
+    
+            {% if dic|length <= 1 %}
+              <p><span style="color:black;font-weight:bold">Edad:</span>1 año</p>
+            {% else %}
+              <p><span style="color:black;font-weight:bold">Edad:</span> {{dic['2']['edad']}}</p>
+            {% endif %}
+          </div>
+        </div>
+    
+    
+        <div class="row">
+          <div class="col-sm-6">
+            {% if dic|length <= 1 %}
+              <p><span style="color:black;font-weight:bold">Tamaño:</span>mediano</p>
+            {% else %}  
+              <p><span style="color:black;font-weight:bold">Tamaño:</span> {{dic['2']['tamanio']}}</p>
+            {% endif %}
+          </div>
+          <div class="col-sm-6">
+            {% if dic|length <= 1 %}
+              <p><span style="color:black;font-weight:bold">Estado:</span>sin vacunas</p>
+            {% else %} 
+              <p><span style="color:black;font-weight:bold">Estado:</span> {{dic['2']['salud']}}</p>
+            {% endif %}
+          </div>
+        </div>
+    
+        <div class="row">
+          <div class="col-sm-6">
+            {% if dic|length <= 1 %}
+              <p><span style="color:black;font-weight:bold">Sociable:</span>humanos</p>
+            {% else %}
+              <p><span style="color:black;font-weight:bold">Sociable:</span> {{dic['2']['sociable']}}</p> 
+            {% endif %}
+          </div>
+          <div class="col-sm-6">
+            {% if dic|length <= 1 %}
+              <p><span style="color:black;font-weight:bold">No. de contacto:</span>7712988778</p>
+            {% else %}
+              <p><span style="color:black;font-weight:bold">No. de contacto:</span> {{dic['2']['contacto']}}</p>
+            {% endif %}
+          </div>
+        </div>
+      </div>
+      <div class="col-sm-3">
+        {% if dic|length <= 2 %}
+          <img src="{{ url_for('static', filename='images/tres.jpeg')}}" class="img-responsive margin" style="width:100%" alt="Image">
+        {% else %}
+          <img src="{{url_for('static', filename=dic['3']['filename'])}}" class="img-responsive margin" style="width:100%" alt="Image">
+        {% endif %}
+        
+      
+          <div class="row">
+            <div class="col-sm-6">
+              {% if dic|length <= 2 %}
+                <p><span style="color:black;font-weight:bold">Nombre:</span>Tomi</p>
+              {% else %}
+                <p><span style="color:black;font-weight:bold">Nombre:</span> {{dic['3']['nombre']}}</p>
+              {% endif %}
+            </div>
+            <div class="col-sm-6">
+              {% if dic|length <= 2 %}
+                <p><span style="color:black;font-weight:bold">Raza:</span>Mestizo</p>
+              {% else %}
+                <p><span style="color:black;font-weight:bold">Raza:</span>{{dic['3']['raza']}}</p>
+              {% endif %}
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-sm-6">
+              {% if dic|length <= 2 %}
+                <p><span style="color:black;font-weight:bold">Sexo:</span>macho</p>
+              {% else %}
+                <p><span style="color:black;font-weight:bold">Sexo:</span>{{dic['3']['sexo']}}</p>
+              {% endif %}
+            </div>
+            <div class="col-sm-6">
+              {% if dic|length <= 2 %}
+                <p><span style="color:black;font-weight:bold">Carácter:</span>docil</p>
+              {% else %}
+                <p><span style="color:black;font-weight:bold">Carácter:</span> {{dic['3']['caracter']}}</p>
+              {% endif %}
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-sm-6">
+              {% if dic=={} %}
+                <p><span style="color:black;font-weight:bold">Color:</span>gris</p>
+              {% else %}
+                <p><span style="color:black;font-weight:bold">Color:</span> {{dic['1']['color']}}</p>
+              {% endif %}
+            </div>
+            <div class="col-sm-6">
+      
+              {% if dic=={} %}
+                <p><span style="color:black;font-weight:bold">Edad:</span>1 año</p>
+              {% else %}
+                <p><span style="color:black;font-weight:bold">Edad:</span> {{dic['1']['edad']}}</p>
+              {% endif %}
+            </div>
+          </div>
+      
+      
+          <div class="row">
+            <div class="col-sm-6">
+              {% if dic=={} %}
+                <p><span style="color:black;font-weight:bold">Tamaño:</span>mediano</p>
+              {% else %}  
+                <p><span style="color:black;font-weight:bold">Tamaño:</span> {{dic['1']['tamanio']}}</p>
+              {% endif %}
+            </div>
+            <div class="col-sm-6">
+              {% if dic=={} %}
+                <p><span style="color:black;font-weight:bold">Estado:</span>sin vacunas</p>
+              {% else %} 
+                <p><span style="color:black;font-weight:bold">Estado:</span> {{dic['1']['salud']}}</p>
+              {% endif %}
+            </div>
+          </div>
+      
+          <div class="row">
+            <div class="col-sm-6">
+              {% if dic=={} %}
+                <p><span style="color:black;font-weight:bold">Sociable:</span>humanos</p>
+              {% else %}
+                <p><span style="color:black;font-weight:bold">Sociable:</span> {{dic['1']['sociable']}}</p> 
+              {% endif %}
+            </div>
+            <div class="col-sm-6">
+              {% if dic|length <= 2 %}
+                <p><span style="color:black;font-weight:bold">No. de contacto:</span>7712988778</p>
+              {% else %}
+                <p><span style="color:black;font-weight:bold">No. de contacto:</span> {{dic['3']['contacto']}}</p>
+              {% endif %}
+            </div>
+          </div>
+          </div>
+          <div class="col-sm-3">
+            {% if dic|length <= 3 %}
+              <img src="{{ url_for('static', filename='images/cuatro.jpeg')}}" class="img-responsive margin" style="width:100%" alt="Image">
+            {% else %}
+              <img src="{{url_for('static', filename=dic['4']['filename'])}}" class="img-responsive margin" style="width:100%" alt="Image">
+            {% endif %}
+            
+          
+              <div class="row">
+                <div class="col-sm-6">
+                  {% if dic|length <= 3 %}
+                    <p><span style="color:black;font-weight:bold">Nombre:</span>Tomi</p>
+                  {% else %}
+                    <p><span style="color:black;font-weight:bold">Nombre:</span> {{dic['4']['nombre']}}</p>
+                  {% endif %}
+                </div>
+                <div class="col-sm-6">
+                  {% if dic|length <= 3 %}
+                    <p><span style="color:black;font-weight:bold">Raza:</span>Mestizo</p>
+                  {% else %}
+                    <p><span style="color:black;font-weight:bold">Raza:</span>{{dic['4']['raza']}}</p>
+                  {% endif %}
+                </div>
+              </div>
+              <div class="row">
+                <div class="col-sm-6">
+                  {% if dic|length <= 3 %}
+                    <p><span style="color:black;font-weight:bold">Sexo:</span>macho</p>
+                  {% else %}
+                    <p><span style="color:black;font-weight:bold">Sexo:</span>{{dic['4']['sexo']}}</p>
+                  {% endif %}
+                </div>
+                <div class="col-sm-6">
+                  {% if dic|length <= 3 %}
+                    <p><span style="color:black;font-weight:bold">Carácter:</span>docil</p>
+                  {% else %}
+                    <p><span style="color:black;font-weight:bold">Carácter:</span> {{dic['4']['caracter']}}</p>
+                  {% endif %}
+                </div>
+              </div>
+              <div class="row">
+                <div class="col-sm-6">
+                  {% if dic|length <= 3 %}
+                    <p><span style="color:black;font-weight:bold">Color:</span>gris</p>
+                  {% else %}
+                    <p><span style="color:black;font-weight:bold">Color:</span> {{dic['4']['color']}}</p>
+                  {% endif %}
+                </div>
+                <div class="col-sm-6">
+          
+                  {% if dic|length <= 3 %}
+                    <p><span style="color:black;font-weight:bold">Edad:</span>1 año</p>
+                  {% else %}
+                    <p><span style="color:black;font-weight:bold">Edad:</span> {{dic['4']['edad']}}</p>
+                  {% endif %}
+                </div>
+              </div>
+          
+          
+              <div class="row">
+                <div class="col-sm-6">
+                  {% if dic|length <= 3 %}
+                    <p><span style="color:black;font-weight:bold">Tamaño:</span>mediano</p>
+                  {% else %}  
+                    <p><span style="color:black;font-weight:bold">Tamaño:</span> {{dic['4']['tamanio']}}</p>
+                  {% endif %}
+                </div>
+                <div class="col-sm-6">
+                  {% if dic|length <= 3 %}
+                    <p><span style="color:black;font-weight:bold">Estado:</span>sin vacunas</p>
+                  {% else %} 
+                    <p><span style="color:black;font-weight:bold">Estado:</span> {{dic['4']['salud']}}</p>
+                  {% endif %}
+                </div>
+              </div>
+          
+              <div class="row">
+                <div class="col-sm-6">
+                  {% if dic|length <= 3 %}
+                    <p><span style="color:black;font-weight:bold">Sociable:</span>humanos</p>
+                  {% else %}
+                    <p><span style="color:black;font-weight:bold">Sociable:</span> {{dic['4']['sociable']}}</p> 
+                  {% endif %}
+                </div>
+                <div class="col-sm-6">
+                  {% if dic|length <= 3 %}
+                    <p><span style="color:black;font-weight:bold">No. de contacto:</span>7712988778</p>
+                  {% else %}
+                    <p><span style="color:black;font-weight:bold">No. de contacto:</span> {{dic['4']['contacto']}}</p>
+                  {% endif %}
+                </div>
+              </div>
+            </div>
+	</div>
+ 
+  <div class="row">
+    <ul class="pager">
+      <li><a href="#">&lt;</a></li>
+      <li><a href="#">&gt;</a></li>
+    </ul>
+  </div>
+
+</div>
+  
+
+<!-- Footer -->
+<footer class="container-fluid bg-4 text-center">
+  <p>®Derechos Reservados 2023 | CatDog-Un nuevo amigo</p> 
+</footer>
+
+<script src="https://code.jquery.com/jquery-3.2.1.js"></script>
+	 <script type="text/javascript">
+	 	$(".input").focus(function() {
+	 		$(this).parent().addClass("focus");
+	 	})
+	 </script>
+
+</body>
+</html> 
