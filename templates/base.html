@@ -2,7 +2,7 @@
 <html lang="es">
 <head>
   <!-- Theme Made By www.w3schools.com - No Copyright -->
-  <title>Bootstrap Theme Simply Me</title>
+  <title>Recuperadog y Rescate</title>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
@@ -18,7 +18,7 @@
   p {font-size: 18px;}
   .margin {margin-bottom: 45px;}
   .bg-1 { 
-    background-color: #52B2F9; /* Blue */
+    background-color: #d4c4e9; /* Blue */
     color: #ffffff;
   }
   .bg-2 { 
@@ -62,13 +62,25 @@
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>                        
       </button>
-      <a class="navbar-brand" href="#">CatDog</a>
+      <a class="navbar-brand" href="{{url_for('home')}}">Recuperadog y Rescate</a>
+      {% if 'nombre' in session %}
+
+            <div style="color: black;">Bienvenido,  {{ session['nombre'] }} !</div>
+            <div style="color: black;"><a href="{{ url_for('logout') }}">Cerrar sesión</a> </div>
+
+          
+        {% else %}
+
+            <div style="color: black;">No has iniciado Sesion</div>
+            
+
+        {% endif %}
     </div>
     <div class="collapse navbar-collapse" id="myNavbar">
       <ul class="nav navbar-nav navbar-right">
         <li><a href="{{url_for('agregar_mascota')}}">Agregar animal</a></li>
         <li><a href="{{url_for('galeria')}}">Busqueda de animales</a></li>
-        <li><a href="#">Iniciar sesión</a></li>
+        <li><a href="{{url_for('login')}}">Iniciar sesión</a></li>
       </ul>
     </div>
   </div>
@@ -76,8 +88,8 @@
 
 <!-- First Container -->
 <div class="container-fluid bg-1 text-center">
-  <h2 class="margin">Catdog-Un nuevo amigo </h2>
-  <image src="{{ url_for('static', filename='images/catdog.jpeg')}}" class="img-responsive img-circle margin" style="display:inline" alt="Perroygato" width="350" height="350">
+  <h2 class="margin">Recuperadog y Rescate </h2>
+  <image src="{{ url_for('static', filename='images/perroygato.jpeg')}}" class="img-responsive img-circle margin" style="display:inline" alt="Perroygato" width="350" height="350">
   <p>Somos un grupo de estudiantes de bachillerato que buscamos ayudar a resolver la problemática social de la gran cantidad de animales en situación de calle. Nuestro proyecto busca fomentar la adopción de animales y el seguimiento posterior a la adopción, con el objetivo de mejorar su bienestar y calidad de vida. Además reducir riesgo para la salud pública y el medio ambiente, y es por eso que queremos brindar una solución innovadora y efectiva.</p>
 </div>
 

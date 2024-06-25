@@ -1,0 +1,101 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<style>
+
+
+body {
+            font-family: Arial, sans-serif;
+            background-image: url("{{ url_for('static', filename='images/adopciones-mobile.webp') }}");
+            background-size: cover; /* Ajustar la imagen al tamaño de la ventana del navegador */
+            background-position: center; /* Centrar la imagen en el fondo */
+            height: 100vh; /* Hacer que el cuerpo ocupe toda la altura visible */
+            margin: 0; /* Eliminar márgenes por defecto del cuerpo */
+            display: flex;
+            align-items: center;
+            justify-content: center;
+}
+
+
+#chat-container {
+    max-width: 400px;
+    margin: 20px auto;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    overflow: hidden;
+}
+
+#messages {
+    list-style-type: none;
+    margin: 0;
+    padding: 10px;
+    overflow-y: scroll;
+    max-height: 300px;
+}
+
+#messages li {
+    margin-bottom: 10px;
+}
+
+#form {
+    padding: 10px;
+    background-color: #f5f5f5;
+    border-top: 1px solid #ccc;
+}
+
+#message_input {
+    width: 70%;
+    padding: 8px;
+    margin-right: 5px;
+}
+
+button {
+    padding: 8px;
+    cursor: pointer;
+}
+
+/* Style for incoming messages */
+.message-incoming {
+    background-color: #e0f7fa;
+    padding: 8px;
+    border-radius: 5px;
+}
+
+/* Style for outgoing messages */
+.message-outgoing {
+    background-color: #b2ebf2;
+    padding: 8px;
+    border-radius: 5px;
+    text-align: right;
+}
+
+</style>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chat</title>
+</head>
+<body>
+
+<div id="chat-container">
+    
+    <ul id="messages" class="message-incoming">Sabemos que estas interesado por adoptar a:</ul>
+    <ul id="messages" class="message-incoming">
+        <img src="{{ url_for('static', filename=''   ) }}" alt="" title="">
+    </ul>
+    <ul id="messages" class="message-outgoing">Sabemos que estas interesado por adoptar a:</ul>
+    <ul id="messages" class="message-input">Sabemos que estas interesado por adoptar a:</ul>
+    
+    
+    
+    <form id="form" onsubmit="sendMessage(); return false;">
+        <input id="message_input" autocomplete="off" placeholder="Escribe tu mensaje..." />
+        <button>Enviar</button>
+    </form>
+</div>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/4.0.1/socket.io.js"></script>
+<script src="app.js"></script>
+
+</body>
+</html>

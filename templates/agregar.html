@@ -2,7 +2,7 @@
 <html lang="es">
 <head>
   <!-- Theme Made By www.w3schools.com - No Copyright -->
-  <title>Bootstrap Theme Simply Me</title>
+  <title>Agregar</title>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
@@ -136,138 +136,172 @@ textarea{
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>                        
       </button>
-      <a class="navbar-brand" href="#">CatDog</a>
+      <a class="navbar-brand" href="{{url_for('home')}}">Recuperadog y Rescate</a>
     </div>
     <div class="collapse navbar-collapse" id="myNavbar">
       <ul class="nav navbar-nav navbar-right">
-        <li><a href="#">Agregar animal</a></li>
-        <li><a href="#">Busqueda de animales</a></li>
-        <li><a href="#">Iniciar sesión</a></li>
+        <li><a href="{{url_for('agregar_mascota')}}">Agregar animal</a></li>
+        <li><a href="{{url_for('galeria')}}">Busqueda de animales</a></li>
+        <li><a href="{{url_for('login')}}">Iniciar sesión</a></li>
       </ul>
     </div>
   </div>
 </nav>
 
-<!-- Third Container (Grid) -->
-<div class="container-fluid bg-3 text-center">    
-<h2 class="margin">Agrega los datos de la mascota</h2><br>
-			<div class="formBox">
-				<form action="#" method="post" enctype="multipart/form-data">
-          <!--
-						<div class="row">
-							<div class="col-sm-12">
-								<h2>Agrega los datos de la mascota</h2>
-							</div>
-						</div>
-          -->
-						<div class="row">
-							<div class="col-sm-6">
-								<div class="inputBox ">
-									<div class="inputText">Nombre</div>
-									<input type="text" name="nombre" class="input">
+{% if  'nombre' in session   %}
+
+
+		<!-- Third Container (Grid) -->
+		<div class="container-fluid bg-3 text-center">    
+		<h2 class="margin">Agrega los datos de la mascota</h2><br>
+					<div class="formBox">
+						<form action="#" method="post" enctype="multipart/form-data">
+				<!--
+								<div class="row">
+									<div class="col-sm-12">
+										<h2>Agrega los datos de la mascota</h2>
+									</div>
 								</div>
-							</div>
+				-->
+								<div class="row">
+									<div class="col-sm-6">
+										<div class="inputBox ">
+											<div class="inputText">Nombre</div>
+											<input type="text" name="nombre" class="input">
+										</div>
+									</div>
 
-              <div class="col-sm-6">
-								<div class="inputBox ">
-									<div class="inputText">Raza</div>
-									<input type="text" name="raza" class="input">
+					<div class="col-sm-6">
+										<div class="inputBox ">
+											<div class="inputText">Raza</div>
+											<input type="text" name="raza" class="input">
+										</div>
+									</div>
 								</div>
-							</div>
-						</div>
 
-            <div class="row">
-							<div class="col-sm-6">
-								<div class="inputBox ">
-									<div class="inputText">Sexo</div>
-									<input type="text" name="sexo" class="input">
+					<div class="row">
+									<div class="col-sm-6">
+										<div class="inputBox ">
+											<div class="inputText">Sexo</div>
+											<input type="text" name="sexo" class="input">
+										</div>
+									</div>
+
+					<div class="col-sm-6">
+										<div class="inputBox ">
+											<div class="inputText">Carácter</div>
+											<input type="text" name="caracter" class="input">
+										</div>
+									</div>
 								</div>
-							</div>
 
-              <div class="col-sm-6">
-								<div class="inputBox ">
-									<div class="inputText">Carácter</div>
-									<input type="text" name="caracter" class="input">
+					<div class="row">
+									<div class="col-sm-6">
+										<div class="inputBox ">
+											<div class="inputText">Color</div>
+											<input type="text" name="color" class="input">
+										</div>
+									</div>
+					<div class="col-sm-6">
+										<div class="inputBox ">
+											<div class="inputText">Edad</div>
+											<input type="text" name="edad" class="input">
+										</div>
+									</div>
 								</div>
-							</div>
-						</div>
 
-            <div class="row">
-							<div class="col-sm-6">
-								<div class="inputBox ">
-									<div class="inputText">Color</div>
-									<input type="text" name="color" class="input">
+					<div class="row">
+									<div class="col-sm-6">
+										<div class="inputBox ">
+											<div class="inputText">Tamaño</div>
+											<input type="text" name="tamanio" class="input">
+										</div>
+									</div>
+					<div class="col-sm-6">
+										<div class="inputBox">
+											<div class="inputText">Estado de salud</div>
+											<input type="text" name="salud" class="input">
+										</div>
+									</div>
 								</div>
-							</div>
-              <div class="col-sm-6">
-								<div class="inputBox ">
-									<div class="inputText">Edad</div>
-									<input type="text" name="edad" class="input">
+
+					<div class="row">
+									<div class="col-sm-6">
+										<div class="inputBox ">
+											<div class="inputText">Sociable con</div>
+											<input type="text" name="sociable" class="input">
+										</div>
+									</div>
+					<div class="col-sm-6">
+										<div class="inputBox">
+											<div class="inputText">No. de contacto</div>
+											<input type="text" name="contacto" class="input">
+										</div>
+									</div>
 								</div>
-							</div>
-						</div>
 
-            <div class="row">
-							<div class="col-sm-6">
-								<div class="inputBox ">
-									<div class="inputText">Tamaño</div>
-									<input type="text" name="tamanio" class="input">
+								<div class="row">
+									
+
+
+									<div class="col-sm-6">
+										
+										<input type="file" name="archivo"> 
+										
+										
+										<!--
+										<label for="file-upload" class="custom-file-upload">
+											<i class="fa fa-cloud-upload"></i> Subir foto
+										</label>
+										<input id="file-upload" name ="file-upload" type="file"/>
+										-->
+									</div>
+
+									<div class="col-sm-6">
+
+										<label>
+											¿Desesa poner en adopción al animal?
+											<select name="checkbox">
+												<option value="NO">NO</option>
+												<option value="SI">SI</option>
+											</select>
+										</label>
+										
+										
+
+
+									</div>
+
+									<div class="row">
+									
+
+
+									
+										<div class="col-sm-12">
+											<input type="submit" name="" class="button" value="Registrar animal y generar QR"> 
+										</div>
+										
+										
+			
+			
+									</div>
+									
+									
+
+
 								</div>
-							</div>
-              <div class="col-sm-6">
-								<div class="inputBox">
-									<div class="inputText">Estado de salud</div>
-									<input type="text" name="salud" class="input">
-								</div>
-							</div>
-						</div>
+						</form>
+					</div>
+				
+			
+		</div>
+{% else %}
 
-            <div class="row">
-							<div class="col-sm-6">
-								<div class="inputBox ">
-									<div class="inputText">Sociable con</div>
-									<input type="text" name="sociable" class="input">
-								</div>
-							</div>
-              <div class="col-sm-6">
-								<div class="inputBox">
-									<div class="inputText">No. de contacto</div>
-									<input type="text" name="contacto" class="input">
-								</div>
-							</div>
-						</div>
-
-						<div class="row">
-							
-
-
-							<div class="col-sm-6">
-								
-								<input type="file" name="archivo"> 
-								
-								 
-								<!--
-								<label for="file-upload" class="custom-file-upload">
-									<i class="fa fa-cloud-upload"></i> Subir foto
-								</label>
-								<input id="file-upload" name ="file-upload" type="file"/>
-								-->
-							</div>
-
-							<div class="col-sm-6">
-								<input type="submit" name="" class="button" value="Enviar"> 
-							</div>
-							
-							
-
-
-						</div>
-				</form>
-			</div>
-		
-	
+<div class="formBox">
+	<h2 class="margin">Necesitas Iniciar Sesión para agregar una mascota con QR o en adopción</h2><br>
+	<a href="{{url_for('login')}}">Iniciar sesión</a>
 </div>
-
+{% endif %}
 <!-- Footer -->
 <footer class="container-fluid bg-4 text-center">
 	<p>®Derechos Reservados 2023 | CatDog-Un nuevo amigo</p> 

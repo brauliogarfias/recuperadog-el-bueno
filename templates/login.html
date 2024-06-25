@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta name="description" content="">
+  <meta name="author" content="">
+
+  <title>Login</title>
+
+  <!-- Custom fonts for this template-->
+  
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+  <link href="https://fonts.googleapis.com/css?family=Montserrat" rel="stylesheet">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+  <style>
+    body {
+      font: 20px Montserrat, sans-serif;
+      line-height: 1.8;
+      color: #f5f6f7;
+      background-color: #d4c4e9;
+    }
+    p {font-size: 18px;}
+    .margin {margin-bottom: 45px;}
+    .bg-1 { 
+      background-color: #52B2F9; /* Blue */
+      color: #ffffff;
+    }
+    .bg-2 { 
+      background-color: #474e5d; /* Dark Blue */
+      color: #ffffff;
+    }
+    .bg-3 { 
+      background-color: #ffffff; /* White */
+      color: #555555;
+    }
+    .bg-4 { 
+      background-color: #2f2f2f; /* Black Gray */
+      color: #fff;
+    }
+    .container-fluid {
+      padding-top: 70px;
+      padding-bottom: 70px;
+    }
+    .navbar {
+      padding-top: 15px;
+      padding-bottom: 15px;
+      border: 0;
+      border-radius: 0;
+      margin-bottom: 0;
+      font-size: 12px;
+      letter-spacing: 5px;
+    }
+    .navbar-nav  li a:hover {
+      color: #1abc9c !important;
+    }
+    </style>
+
+
+</head>
+
+<body>
+
+
+  <!-- Navbar -->
+  <nav class="navbar navbar-default">
+    <div class="container">
+      <div class="navbar-header">
+        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>                        
+        </button>
+        <a class="navbar-brand" href="{{url_for('home')}}">Recuperadog y Rescate</a>
+      </div>
+      <div class="collapse navbar-collapse" id="myNavbar">
+        <ul class="nav navbar-nav navbar-right">
+          <li><a href="{{url_for('agregar_mascota')}}">Agregar animal</a></li>
+          <li><a href="{{url_for('galeria')}}">Busqueda de animales</a></li>
+          <li><a href="{{url_for('login')}}">Iniciar sesión</a></li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+
+
+  <div class="container">
+
+   
+
+
+    <!-- Outer Row -->
+    <div class="row justify-content-center">
+
+   
+
+
+      <div class="col-xl-10 col-lg-12 col-md-9">
+
+        <div class="card o-hidden border-0 shadow-lg my-5">
+          <div class="card-body p-0">
+            <!-- Nested Row within Card Body -->
+            <div class="row">
+              <div class="col-lg-6 d-none d-lg-block bg-login-image"><image src="{{ url_for('static', filename='images/catdog.jpeg')}}" class="img-responsive img-circle margin" style="display:inline" alt="Perroygato" width="350" height="350"></image></div>
+              <div class="col-lg-6">
+                <div class="p-5">
+                  <div class="text-center">
+                    <h1 class="h4 text-gray-900 mb-4">Inicia Sesión  </h1>
+                  </div>
+
+                  {% if  not('nombre' in session)   %}
+
+                    
+
+                    <form action="#" method="post" enctype="multipart/form-data">
+                        <div class="form-group">
+                          <input type="email" class="form-control form-control-user" name="nombre" id="nombre" aria-describedby="emailHelp" placeholder="Ingresa Email...">
+                        </div>
+                      <div class="form-group">
+                        <input type="password" class="form-control form-control-user" name="password" id="password" placeholder="Contraseña">
+                      </div>
+                      
+
+                      <input type="submit" name="" class="" style="color: black;" value="Acceder"> 
+                    
+                    
+                    </form>
+
+
+                    <hr>
+                    <div class="text-center">
+                      
+                    </div>
+                    <div class="text-center">
+                      <a class="small" href="{{url_for('signin')}}">Crea una Cuenta</a>
+                    </div>
+                  {% else %}
+
+                      <h1 class="h4 text-gray-900 mb-4">Ya estas dentro, Cuenta: {{ session['nombre'] }} </h1>
+                      <a class="small" href="{{url_for('logout')}}">Salir de la Cuenta</a>
+                      
+
+                  {% endif %}
+
+                 
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+
+    </div>
+
+  </div>
+
+
+  <!-- Bootstrap core JavaScript-->
+  <script src="{{ url_for('static', filename='vendor/jquery/jquery.min.js') }} "></script>
+  <script src="{{ url_for('static', filename='vendor/bootstrap/js/bootstrap.bundle.min.js') }}  "></script>
+
+  <!-- Core plugin JavaScript-->
+  <script src="{{ url_for('static', filename='vendor/jquery-easing/jquery.easing.min.js') }}  "></script>
+
+  <!-- Custom scripts for all pages-->
+  <script src="{{ url_for('static', filename='js/sb-admin-2.min.js') }}   "></script>
+
+</body>
+
+</html>
