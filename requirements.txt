@@ -23,6 +23,9 @@ pure-eval==0.2.2
 Pygments==2.15.1
 pymongo==4.3.3
 python-dateutil==2.8.2
+python-dotenv==1.0.1
+qrcode==7.4.2
+DateTime==5.5
 pytz==2022.7.1
 six==1.16.0
 stack-data==0.6.2
