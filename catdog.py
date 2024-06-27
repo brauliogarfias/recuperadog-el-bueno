@@ -152,7 +152,7 @@ def crear_qr(mascota_id):
 
     id_mascota = mascota_id
   
-    host =   "http://127.0.0.1:5000/seguimiento2/"
+    host =   "https://recuperadog-el-bueno.onrender.com/seguimiento2/"
     
     data = host + id_mascota
  
